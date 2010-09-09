@@ -1,0 +1,5 @@
+h1. ROO like generators for RAILS
+
+p. this is inspired by "www.springsource.org/roo":http://www.springsource.org/roo which allows to manage models and their views during the whole lifecycle of the related classes/files.
+
+
