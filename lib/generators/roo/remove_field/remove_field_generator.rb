@@ -1,6 +1,6 @@
 require 'rails/generators/active_record'
 require 'rails/generators/active_record/migration/migration_generator'
-require 'roo/base'
+require 'generators/roo'
 
 module Roo
   module Generators

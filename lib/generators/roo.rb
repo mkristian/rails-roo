@@ -1,6 +1,7 @@
+require 'rails/generators'
 require 'rails/generators/active_record'
 require 'rails/generators/active_record/migration/migration_generator'
-require 'roo/active_record/validations_file'
+require 'generators/active_record/validations_file'
 module Roo
   module Generators
     class Base < ::ActiveRecord::Generators::Base
@@ -11,7 +12,7 @@ module Roo
       end
 
       def self.parameters_argument
-        argument :parameters, :type => :hash, :default => {}, :banner => "index:name index:true unique:true min:123 max:128 nullable:false default:blablub"
+        argument :parameters, :type => :hash, :default => {}, :banner => "index:name index:true unique:true min:123 max:128 presence:false default:blablub"
       end
 
       def self.migration_exists?(dirname, file_name)
@@ -89,7 +90,7 @@ module Roo
         @new_column_options = {}
         @parameters ||= {}
         @new_column_options[:limit] = @parameters["max"] if @parameters["max"] && @parameters["max"].to_i > 0
-        @new_column_options[:default] = @parameters["default"] if @parameters["default"] && @parameters["default"] != ''
+        @new_column_options[:default] = @parameters["default"]if @parameters["default"] && @parameters["default"] != ''
         @new_column_options[:null] = "true" != @parameters["presence"] 
         #TODO precision + scale for decimal
       end
